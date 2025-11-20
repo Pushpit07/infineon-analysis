@@ -1,5 +1,7 @@
 # Infineon Alarm Insights
 
+Spreadsheet: https://docs.google.com/spreadsheets/d/1O8UruRR699hr3tVptBUAWpTgLGBYBw9eo67oGErP5Wo/edit?usp=sharing
+
 This repository captures the analysis of the `infineon.xlsx` workbook, focusing on the `AlarmData` sheet. Each record represents the number of times a specific alarm fired in a given month between **Jan 2024 and Oct 2025**.
 
 ## Overview
@@ -56,10 +58,24 @@ E84 protocol timing still drives more than a third of all alarms, but the “Oth
 - **Diversity whiplash:** Unique alarms per month collapsed to just **15** in Dec 2024 but bounced back to **25** by Mar 2025, showing how quickly issue mix can shift as new failure modes (LLC rejects) emerge.
 - **Concentrated spikes:** The three busiest months (Feb–Apr 2025) alone generate **18.5 %** of all 20,681 alarms, so remediation efforts targeted at those surges could yield outsized returns.
 
+## “English” Sheet Insights
+
+- **Coverage & structure:** 946 controller-level error codes span IDs 1110–9992. Types map cleanly to severity classes—`E` (errors, 63.8 %) are always `Level 3 / Class 2`, `W` (warnings, 35.3 %) are `Level 1 / Class 6`, and `C` (critical, 0.8 %) are `Level 5 / Class 7`. This provides a turnkey severity taxonomy for alert routing.
+- **Operational problem statements:**
+  - **Unlinked vocabularies:** None of the 58 six-digit `Alarm_ID`s in `AlarmData` appear in this four-digit dictionary, so analysts cannot yet pull severity/type metadata into the volume trends. Building an OHT→equipment-code crosswalk is the single biggest blocker to richer insights.
+  - **Runbook blind spots:** 73 codes (7.7 %) lack “Item to be confirmed” checklists; the 2300-series BCU/modem family alone is missing guidance 75 % of the time, leaving comms incidents under-specified for operators.
+  - **Concentrated failure surface:** Just five hundred-block families (4600, 2400, 2900, 2300, 2800) contain 322 codes—**34 % of the dictionary**—and all map to material-flow setup, auto-lifter interlocks, SCPS drive health, and modem links. These are the subsystems most likely to produce unfamiliar alarms in the field.
+- **Leveraging the sheet to solve things:**
+  - **Automate escalation:** Use the Type/Level/Class triad to drive paging (auto-page for `C` Level 5 codes, open tickets for `E`, suppress/auto-retry `W` up to their defined retry count). Because 99 % of `E` codes disallow retries while warnings own every multi-retry case (46 allow one retry, 11 allow two), this strategy aligns perfectly with engineering intent.
+  - **Improve warning handling:** `W` entries supply “Item to be confirmed” only 81 % of the time versus 99 % for `E`. Prioritizing checklist authoring for warning-heavy families (2300 modems, 1400 interlocks, 2900 power) would close the human-factors gap without touching tooling.
+  - **Subsystem playbooks:** The dominant families naturally cluster: 4600 codes highlight destination/order database drift, 2400s point to RTM/auto-lifter permissions, 2900/2800s scream drive temperature/overcurrent. Grouping monitoring/maintenance efforts by these families ensures coverage of one-third of the catalog with a handful of targeted runbooks.
+  - **Predictive filtering:** Because retry allowances sit almost exclusively in warnings, a simple rule of “only surface a warning after the allowed retry budget is exhausted” can cut console noise without risking missed critical events.
+- **Next steps:** build the translation layer, enrich AlarmData with Type/Level/Retry from this sheet, and feed the combined set into the existing chart pipeline to spotlight which production alarms deserve automatic escalations versus auto-retries.
+
 ## Reproducing the Analysis
 
 ```bash
-cd /Users/pushpit/Desktop/yeti/sem2
+cd /Users/pushpit/Desktop/yeti/sem2/infineon-analysis
 python3 -m venv .venv && source .venv/bin/activate
 python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas seaborn matplotlib openpyxl
 python scripts/analyze_alarms.py
