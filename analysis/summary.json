@@ -1,0 +1,207 @@
+{
+  "records": 476,
+  "period_start": "2024-01",
+  "period_end": "2025-10",
+  "total_alarms_logged": 20681,
+  "top_alarm_share": 0.6671,
+  "top_alarms": [
+    {
+      "Alarm_ID": 851110,
+      "AlarmText": "Vehicle communication connection error",
+      "Count": 3341
+    },
+    {
+      "Alarm_ID": 854524,
+      "AlarmText": "Look down sensor timeout",
+      "Count": 1549
+    },
+    {
+      "Alarm_ID": 854690,
+      "AlarmText": "E84:Ho-AVBL OFF error (drop off)",
+      "Count": 1454
+    },
+    {
+      "Alarm_ID": 854692,
+      "AlarmText": "E84:L_REQ  ON error (drop off final)",
+      "Count": 1305
+    },
+    {
+      "Alarm_ID": 854693,
+      "AlarmText": "E84:READY OFF error (drop off)",
+      "Count": 1297
+    },
+    {
+      "Alarm_ID": 854677,
+      "AlarmText": "E84:READY OFF error(pick up)",
+      "Count": 1242
+    },
+    {
+      "Alarm_ID": 900009,
+      "AlarmText": "LLC Reject [Rejected by LLC. Cannot perform now[2]]",
+      "Count": 1083
+    },
+    {
+      "Alarm_ID": 854676,
+      "AlarmText": "E84:U_REQ ON error (pick up)",
+      "Count": 934
+    },
+    {
+      "Alarm_ID": 854123,
+      "AlarmText": "Hand swing error in drop off",
+      "Count": 853
+    },
+    {
+      "Alarm_ID": 855263,
+      "AlarmText": "FOUP loss during FOUP locking(sensor2)",
+      "Count": 739
+    }
+  ],
+  "top_month": {
+    "Month": "2025-03-01 00:00:00",
+    "total_count": 1365,
+    "unique_alarms": 25
+  },
+  "lowest_month": {
+    "Month": "2025-01-01 00:00:00",
+    "total_count": 550,
+    "unique_alarms": 17
+  },
+  "monthly_totals": [
+    {
+      "Month": "2024-01-01 00:00:00",
+      "total_count": 1107,
+      "unique_alarms": 23
+    },
+    {
+      "Month": "2024-02-01 00:00:00",
+      "total_count": 1178,
+      "unique_alarms": 25
+    },
+    {
+      "Month": "2024-03-01 00:00:00",
+      "total_count": 1118,
+      "unique_alarms": 28
+    },
+    {
+      "Month": "2024-04-01 00:00:00",
+      "total_count": 1000,
+      "unique_alarms": 21
+    },
+    {
+      "Month": "2024-05-01 00:00:00",
+      "total_count": 1058,
+      "unique_alarms": 20
+    },
+    {
+      "Month": "2024-06-01 00:00:00",
+      "total_count": 843,
+      "unique_alarms": 19
+    },
+    {
+      "Month": "2024-07-01 00:00:00",
+      "total_count": 749,
+      "unique_alarms": 19
+    },
+    {
+      "Month": "2024-08-01 00:00:00",
+      "total_count": 814,
+      "unique_alarms": 24
+    },
+    {
+      "Month": "2024-09-01 00:00:00",
+      "total_count": 817,
+      "unique_alarms": 23
+    },
+    {
+      "Month": "2024-10-01 00:00:00",
+      "total_count": 790,
+      "unique_alarms": 24
+    },
+    {
+      "Month": "2024-11-01 00:00:00",
+      "total_count": 733,
+      "unique_alarms": 21
+    },
+    {
+      "Month": "2024-12-01 00:00:00",
+      "total_count": 625,
+      "unique_alarms": 15
+    },
+    {
+      "Month": "2025-01-01 00:00:00",
+      "total_count": 550,
+      "unique_alarms": 17
+    },
+    {
+      "Month": "2025-02-01 00:00:00",
+      "total_count": 995,
+      "unique_alarms": 25
+    },
+    {
+      "Month": "2025-03-01 00:00:00",
+      "total_count": 1365,
+      "unique_alarms": 25
+    },
+    {
+      "Month": "2025-04-01 00:00:00",
+      "total_count": 1284,
+      "unique_alarms": 23
+    },
+    {
+      "Month": "2025-05-01 00:00:00",
+      "total_count": 741,
+      "unique_alarms": 22
+    },
+    {
+      "Month": "2025-06-01 00:00:00",
+      "total_count": 784,
+      "unique_alarms": 21
+    },
+    {
+      "Month": "2025-07-01 00:00:00",
+      "total_count": 839,
+      "unique_alarms": 16
+    },
+    {
+      "Month": "2025-08-01 00:00:00",
+      "total_count": 959,
+      "unique_alarms": 21
+    },
+    {
+      "Month": "2025-09-01 00:00:00",
+      "total_count": 1164,
+      "unique_alarms": 22
+    },
+    {
+      "Month": "2025-10-01 00:00:00",
+      "total_count": 1168,
+      "unique_alarms": 22
+    }
+  ],
+  "category_totals": [
+    {
+      "Category": "E84 handshaking & interlocks",
+      "Count": 7731
+    },
+    {
+      "Category": "Robot hand motion/control",
+      "Count": 5464
+    },
+    {
+      "Category": "Other / misc",
+      "Count": 2734
+    },
+    {
+      "Category": "Sensors & detection",
+      "Count": 2298
+    },
+    {
+      "Category": "FOUP handling & lock issues",
+      "Count": 1807
+    },
+    {
+      "Category": "Communication & power",
+      "Count": 647
+    }
+  ]
+}
